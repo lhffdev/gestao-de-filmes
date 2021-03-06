@@ -1,0 +1,32 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose*.yml
+!docker-compose.yml
+
+# Config files
+.env
+.env.json
+
+# Rails
+backend/log/*
+!backend/log/.keep
+
+backend/tmp/*
+!backend/tmp/.keep
+
+backend/tmp/pids/*
+!backend/tmp/pids/.keep
+
+backend/.settings
+
+# compiled output
+frontend/dist/
+frontend/dist-server/
+frontend/tmp/
+
+# dependencies
+frontend/node_modules/
+frontend/yarn.lock

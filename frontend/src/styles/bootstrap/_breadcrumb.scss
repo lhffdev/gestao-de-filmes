@@ -1,0 +1,35 @@
+.breadcrumb-item {
+  font-size: 12px;
+
+  a {
+    color: $secondary;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $secondary-hover;
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 0px;
+  background-color: transparent;
+}
+
+.title {
+  color: $primary;
+  font-weight: $font-weight-semi-bold;
+  font-size: 20px;
+  padding: 12px 16px 12px 0px;
+  
+}
+
+.borda {
+  border-right: 1px solid $gray-500;
+}
+
+.subtitle {
+  color: $gray-500;
+  font-weight: $font-weight-semi-bold;
+  font-size: 12px;
+}

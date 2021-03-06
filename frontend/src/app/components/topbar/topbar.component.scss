@@ -1,0 +1,14 @@
+@import 'vars';
+
+.navbar {
+  height: 72px;
+  background-color: $white;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.12);
+  color: $primary;
+  z-index: 9999;
+}
+
+.dados-empresa {
+  font-size: 16px;
+  font-weight: bold;
+}

@@ -1,0 +1,31 @@
+button {
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.btn-sized {
+  min-width: 11rem;
+}
+
+.btn-light {
+  border-color: $gray-600;
+  background-color: $white;
+
+  @include hover {
+    color: $white;
+    background-color: $gray-600;
+  }
+
+}
+
+.btn-light:active {
+  color: $white !important;
+  background-color: $gray-600 !important;
+}

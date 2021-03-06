@@ -1,0 +1,27 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.6.6'
+
+#==================================================
+# RAILS CORE
+#==================================================
+gem 'rails', '~> 6.0'
+gem 'puma', '~> 4.1'
+gem 'pg', '~> 1.2'
+gem 'pry-meta', '~> 0.0.10'
+gem 'rack-cors', '~> 1.1'
+
+#==================================================
+# BACK-END
+#==================================================
+gem 'rails-i18n', '~> 6.0'
+gem 'jbuilder', '~> 2.7'
+
+#==================================================
+# Development environment
+#==================================================
+group :development do
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
