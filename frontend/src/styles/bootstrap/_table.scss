@@ -1,0 +1,27 @@
+@import 'vars';
+
+.table {
+  margin-bottom: 0;
+  font-size: $font-size-base * .875;
+
+  tbody, tr {
+    outline: none;
+  }
+
+  .thead-light th {
+    border-color: $gray-400;
+    border-bottom-width: $table-border-width;
+  }
+
+  tbody tr {
+    color: $gray-600;
+  }
+
+  tbody.action, tr.action {
+    cursor: pointer;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

@@ -69,7 +69,7 @@ class Filme < ApplicationRecord
     if search_term.match?(/^\d+$/)
       list_all.where('filmes.id = ?', search_term.to_i)
     elsif search_term.match?(/\A(\d{1,2}\/\d{1,2}\/\d{4})+\z/) && Date.strptime(search_term, '%d/%m/%y').present?
-      list_all.where('filmes.created_at = ?', search_term.to_date)
+      list_all.where('cast(filmes.created_at as date) = ?', search_term.to_date)
     else
       list_all.where(<<~SQL, "%#{search_term}%", "%#{search_term}%")
         filmes.titulo ilike ? or

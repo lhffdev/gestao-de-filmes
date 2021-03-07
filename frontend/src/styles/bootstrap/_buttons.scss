@@ -29,3 +29,13 @@ button {
   color: $white !important;
   background-color: $gray-600 !important;
 }
+
+.btn-icon {
+  background-color: $gray-200;
+  border: none;
+  color: $secondary;
+
+  @include hover {
+    color: $secondary;
+  }
+}
