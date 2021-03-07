@@ -33,9 +33,9 @@ button {
 .btn-icon {
   background-color: $gray-200;
   border: none;
-  color: $secondary;
+  color: $gray-600;
 
   @include hover {
-    color: $secondary;
+    color: $gray-600;
   }
 }

@@ -13,5 +13,5 @@ json.call(
   :tempo_locacao_descricao,
   :genero_id,
   :genero_nome,
-  :created_at
 )
+json.data_cadastro @filme.created_at.to_date.to_s

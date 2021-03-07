@@ -1,9 +1,14 @@
-.container {
-  max-width: 95%;
-}
+@import 'vars';
 
 .btn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: $gray-100 !important;
+}
+
+img {
+  max-height: 350px;
+}
+
+.spinner-delete {
+  height: 15px !important;
+  width: 15px !important;
 }

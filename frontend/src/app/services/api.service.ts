@@ -47,6 +47,14 @@ export class ApiService {
       .catch(response => this.errorResponse(response));
   }
 
+  downloadFile(path) {
+    return this.httpClient
+      .get(this.apiUrl(path), { responseType: 'blob' })
+      .toPromise()
+      .then(response => this.successResponse(response))
+      .catch(response => this.errorResponse(response));
+  }
+
   apiUrl(path) {
     return `${environment.apiUrl}/${path}`;
   }
