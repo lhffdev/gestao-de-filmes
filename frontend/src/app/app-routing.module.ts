@@ -12,6 +12,11 @@ const routes: Routes = [
     {
       path: '', component: LayoutComponent, children: [
         { path: '', component: HomeComponent},
+        {
+          path: 'filmes',
+          data: { title: 'Filmes' },
+          loadChildren: () => import('./filme/filme.module').then(m => m.FilmeModule)
+        },
         { path: 'form-exemple', data: { title: 'Form list' }, children: [
           {path: 'form-exemple-filho', component: FormExempleComponent, data: { title: 'Form Exemple' }}
         ]}

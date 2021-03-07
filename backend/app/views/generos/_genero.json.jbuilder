@@ -1,0 +1,1 @@
+json.call(genero, :id, :nome)

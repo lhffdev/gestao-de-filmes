@@ -1,0 +1,2 @@
+class TempoLocacao < ApplicationRecord
+end
