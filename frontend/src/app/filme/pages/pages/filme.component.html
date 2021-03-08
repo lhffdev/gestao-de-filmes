@@ -2,9 +2,7 @@
 
 <div *ngIf="filmes">
   <div class="row mt-4 ml-0 mr-0">
-    <button type="button" class="btn btn-secondary btn-sized" [routerLink]="['/filmes/adicionar']" >
-      Novo filme
-    </button>
+    <button type="button" class="btn btn-secondary btn-sized" [routerLink]="['/filmes/adicionar']" >Novo filme</button>
 
     <form class="ml-auto" (submit)="customSearch()">
       <div class="input-group input-group-search">

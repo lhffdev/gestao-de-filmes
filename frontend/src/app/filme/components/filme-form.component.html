@@ -1,0 +1,138 @@
+<app-loader *ngIf="!formFilme" class="mt-4"></app-loader>
+
+<div *ngIf="formFilme" class="card mt-4">
+	<div class="card-body p-4">
+    <form [formGroup]="formFilme">
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Título</label>
+          <input type="text" class="form-control" formControlName="titulo" placeholder="Informe um título">
+          <div *ngIf="verificarValidTouched('titulo') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('titulo').errors?.required">É obrigatório informar o título.</div>
+          </div>
+        </div>
+        
+        <div class="form-group col">
+          <label for="genero">Gênero</label>
+          <ng-select
+            labelForId="genero"
+            [items]="generos"
+            bindLabel="nome"
+            bindValue="id"
+            placeholder="Selecione um gênero"
+            formControlName="genero"
+            [loading]="!generos"
+            notFoundText="Gênero não localizado"
+          >
+          </ng-select>
+          <div *ngIf="verificarValidTouched('genero') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('genero').errors?.required">É obrigatório informar o gênero.</div>
+          </div>
+        </div>  
+
+        <div class="form-group col">
+          <label for="tipoMidia">Tipo de mídia</label>
+          <ng-select
+            labelForId="tipoMidia"
+            [items]="tipoMidias"
+            bindLabel="descricao"
+            bindValue="id"
+            placeholder="Selecione um tipo de mídia"
+            formControlName="tipoMidia"
+            [loading]="!tipoMidias"
+            notFoundText="Tipo de mídia não localizada"
+          >
+          </ng-select>
+          <div *ngIf="verificarValidTouched('tipoMidia') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('tipoMidia').errors?.required">É obrigatório informar o tipo de mídia.</div>
+          </div>
+        </div> 
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Principais atores</label>
+          <input type="text" class="form-control" formControlName="principaisAtores" placeholder="Informe os principais atores">
+          <div *ngIf="verificarValidTouched('principaisAtores') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('principaisAtores').errors?.required">É obrigatório informar os principais atores.</div>
+          </div>
+        </div>
+
+        <div class="form-group col">
+          <label>Principais diretores</label>
+          <input type="text" class="form-control" formControlName="principaisDiretores" placeholder="Informe os principais diretores">
+          <div *ngIf="verificarValidTouched('principaisDiretores') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('principaisDiretores').errors?.required">É obrigatório informar os principais diretores.</div>
+          </div>
+        </div>
+
+        <div class="form-group col">
+          <label>Idiomas</label>
+          <input type="text" class="form-control" formControlName="idiomas" placeholder="Informe os idiomas">
+          <div *ngIf="verificarValidTouched('idiomas') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('idiomas').errors?.required">É obrigatório informar os idiomas.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Fornecedor</label>
+          <input type="text" class="form-control" formControlName="fornecedor" placeholder="Informe o fornecedor">
+          <div *ngIf="verificarValidTouched('fornecedor') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('fornecedor').errors?.required">É obrigatório informar o fornecedor.</div>
+          </div>
+        </div>
+
+        <div class="form-group col">
+          <label for="tempoLocacao">Tempo de locação</label>
+          <ng-select
+            labelForId="tempoLocacao"
+            [items]="tempoLocacoes"
+            bindLabel="descricao"
+            bindValue="id"
+            placeholder="Selecione um tempo de locação"
+            formControlName="tempoLocacao"
+            [loading]="!tempoLocacoes"
+            notFoundText="Tempo de locação não localizado"
+          >
+          </ng-select>
+          <div *ngIf="verificarValidTouched('tempoLocacao') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('tempoLocacao').errors?.required">É obrigatório informar o tempo de locação.</div>
+          </div>
+        </div> 
+
+        <div class="form-group col">
+          <label>Valor da locação (R$)</label>
+          <input type="text" class="form-control" formControlName="valorLocacao" [imask]="decimal2Mask" unmask='typed' placeholder="Informe o valor da locação">
+          <div *ngIf="verificarValidTouched('valorLocacao') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('valorLocacao').errors?.required">É obrigatório informar o valor de locação.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Capa</label>
+          <div class="custom-file">
+            <input type="file" (change)="onFileChange($event)" class="custom-file-input cursor-pointer" lang="pt">
+            <label class="custom-file-label" for="validatedCustomFile">{{ fileName }}</label>
+          </div>
+          <div *ngIf="verificarValidTouched('capa') || formSubmitted" class="invalid-feedback d-block">
+            <div *ngIf="campoFormOrdemDeServico('capa').errors?.required">É obrigatório informar a capa.</div>
+          </div>
+        </div>
+      </div>
+    </form>
+	</div>
+
+  <div class="container-fluid pt-0 pr-4 pb-4 pl-4">
+    <button (click)="salvar()" class="btn btn-secondary btn-sized mr-2" [disabled]="habilitarLoadBotaoSalvar">
+      Salvar
+      <div *ngIf="habilitarLoadBotaoSalvar" class="spinner-save spinner-border text-secondary"></div>
+    </button>
+    <button (click)="calcelar()" class="btn btn-light btn-sized">Cancelar</button>
+  </div>
+</div>
+
+<app-modal-alert></app-modal-alert>

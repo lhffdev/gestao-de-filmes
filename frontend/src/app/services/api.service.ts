@@ -17,7 +17,7 @@ export class ApiService {
 
   get(path, params = {}) {
     return this.httpClient
-      .get(this.apiUrl(path), this.getOptions(params))
+      .get(this.apiUrl(path), {params: params})
       .toPromise()
       .then(response => this.successResponse(response))
       .catch(response => this.errorResponse(response));
@@ -25,7 +25,7 @@ export class ApiService {
 
   post(path, params = {}) {
     return this.httpClient
-      .post(this.apiUrl(path), params, this.getOptions())
+      .post(this.apiUrl(path), {params: params})
       .toPromise()
       .then(response => this.successResponse(response))
       .catch(response => this.errorResponse(response));
@@ -33,15 +33,15 @@ export class ApiService {
 
   patch(path, params = {}) {
     return this.httpClient
-      .patch(this.apiUrl(path), params, this.getOptions())
+      .patch(this.apiUrl(path), {params: params})
       .toPromise()
       .then(response => this.successResponse(response))
       .catch(response => this.errorResponse(response));
   }
 
-  delete(path, params = {}) {
+  delete(path, body = {}) {
     return this.httpClient
-      .delete(this.apiUrl(path), this.getOptions({}, params))
+      .delete(this.apiUrl(path), body)
       .toPromise()
       .then(response => this.successResponse(response))
       .catch(response => this.errorResponse(response));
@@ -57,14 +57,6 @@ export class ApiService {
 
   apiUrl(path) {
     return `${environment.apiUrl}/${path}`;
-  }
-
-  private getOptions(params = {}, body = {}) {
-    return {
-      headers: new HttpHeaders({'Content-Type': 'application/json'}),
-      params,
-      body
-    };
   }
 
   private successResponse(response) {

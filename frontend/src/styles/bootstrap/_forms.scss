@@ -1,6 +1,58 @@
+@import 'vars';
+
 .form-group {
   label {
     color: $gray-600;
     font-weight: $font-weight-semi-bold;
   }
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
+  border-color: #afb5ba !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(29, 43, 54, 0.25) !important;
+}
+
+.ng-select-container {
+  border: 2px solid #e9ecef !important;
+  padding: 17px 2px 17px 2px !important;
+
+  .ng-placeholder {
+    font-size: $font-size-base;
+    color: $input-placeholder-color !important;
+  }
+
+  .ng-value {
+    font-size: $font-size-base;
+    color: $input-color;
+  }
+
+  .ng-input {
+    padding-top: 4px;
+  }
+
+  .ng-input input {
+    font-size: $font-size-base !important;
+    color: $input-color !important;
+  }
+}
+
+.ng-option-label {
+  font-size: $font-size-base !important;
+  color: $input-color !important;
+}
+
+.custom-file-label {
+  font-weight: 400 !important;
+  padding-top: 6px;
+  color: $input-color !important;
+  font-size: $font-size-base !important;
+}
+
+.custom-file-label::after {
+  height: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

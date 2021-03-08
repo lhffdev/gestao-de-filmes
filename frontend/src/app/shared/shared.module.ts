@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { IMaskModule } from 'angular-imask';
 
 import { LoaderComponent } from '../components/loader/loader.component';
 
@@ -30,7 +32,9 @@ import { CustomDateTimePipe } from './pipes/custom-date-time.pipe';
     CommonModule,
     HttpClientModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule,
+    IMaskModule
   ],
   exports: [
     BackgroundComponent,
@@ -40,6 +44,8 @@ import { CustomDateTimePipe } from './pipes/custom-date-time.pipe';
     HttpClientModule,
     MatIconModule,
     FormsModule,
+    NgSelectModule,
+    IMaskModule,
     CustomNumberPipe,
     CustomIntegerPipe,
     CustomDatePipe,

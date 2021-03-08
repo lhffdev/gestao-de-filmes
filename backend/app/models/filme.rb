@@ -56,7 +56,7 @@ class Filme < ApplicationRecord
       :tempo_locacao,
       :tipo_midia
     )
-    .order('filmes.titulo')
+    .order('filmes.id')
   end
 
   def self.search_by_id(filme_id)

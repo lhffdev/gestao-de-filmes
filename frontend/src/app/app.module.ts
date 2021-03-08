@@ -18,7 +18,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { ErrorComponent } from './pages/error/error.component';
-import { FormExempleComponent } from './pages/form-exemple/form-exemple.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 registerLocaleData(localePt, 'pt-BR', localePtExtra);
@@ -31,8 +30,7 @@ registerLocaleData(localePt, 'pt-BR', localePtExtra);
     TopbarComponent,
     BreadcrumbsComponent,
     ErrorComponent,
-    NotFoundComponent,
-    FormExempleComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
