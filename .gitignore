@@ -29,4 +29,3 @@ frontend/tmp/
 
 # dependencies
 frontend/node_modules/
-frontend/yarn.lock

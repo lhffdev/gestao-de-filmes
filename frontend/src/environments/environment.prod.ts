@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://api-gestao-de-filmes.herokuapp.com'
 };
