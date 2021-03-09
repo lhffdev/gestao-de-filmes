@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -12,6 +12,7 @@ import { ModalAlertComponent } from 'src/app/shared/components/modal-alert/modal
 export class FilmeFormComponent implements OnInit {
 
   fileName = 'Nenhum arquivo selecionado';
+  file;
   generos;
   tempoLocacoes;
   tipoMidias;
@@ -73,6 +74,10 @@ export class FilmeFormComponent implements OnInit {
       valorLocacao: [filme['valorLocacao'], Validators.required],
       capa: [filme['capa'], Validators.required]
     });
+
+    if (this.isEdition) {
+      this.fileName = this.filme.nomeCapa;
+    }
   }
 
   verificarValidTouched(nomeCampo) {

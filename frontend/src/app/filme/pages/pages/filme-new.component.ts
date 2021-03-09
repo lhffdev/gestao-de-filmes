@@ -37,6 +37,7 @@ export class FilmeNewComponent implements OnInit {
       this.router.navigate([`filmes/${response['filmeId']}`])
     })
     .catch(error => {
+      this.filmeFormComponent.habilitarLoadBotaoSalvar = false;
       this.filmeFormComponent.formSubmitted = false;
       this.modalAlertComponent.show(error.error);
     });

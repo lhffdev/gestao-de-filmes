@@ -25,7 +25,7 @@ export class ApiService {
 
   post(path, params = {}) {
     return this.httpClient
-      .post(this.apiUrl(path), {params: params})
+      .post(this.apiUrl(path), params)
       .toPromise()
       .then(response => this.successResponse(response))
       .catch(response => this.errorResponse(response));
@@ -33,7 +33,7 @@ export class ApiService {
 
   patch(path, params = {}) {
     return this.httpClient
-      .patch(this.apiUrl(path), {params: params})
+      .patch(this.apiUrl(path), params)
       .toPromise()
       .then(response => this.successResponse(response))
       .catch(response => this.errorResponse(response));

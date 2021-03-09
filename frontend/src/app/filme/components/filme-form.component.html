@@ -118,7 +118,7 @@
             <input type="file" (change)="onFileChange($event)" class="custom-file-input cursor-pointer" lang="pt">
             <label class="custom-file-label" for="validatedCustomFile">{{ fileName }}</label>
           </div>
-          <div *ngIf="verificarValidTouched('capa') || formSubmitted" class="invalid-feedback d-block">
+          <div *ngIf="!isEdition && (verificarValidTouched('capa') || formSubmitted)" class="invalid-feedback d-block">
             <div *ngIf="campoFormOrdemDeServico('capa').errors?.required">É obrigatório informar a capa.</div>
           </div>
         </div>
@@ -131,7 +131,7 @@
       Salvar
       <div *ngIf="habilitarLoadBotaoSalvar" class="spinner-save spinner-border text-secondary"></div>
     </button>
-    <button (click)="calcelar()" class="btn btn-light btn-sized">Cancelar</button>
+    <button (click)="calcelar()" class="btn btn-light btn-sized" [disabled]="habilitarLoadBotaoSalvar">Cancelar</button>
   </div>
 </div>
 

@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-// import { ModalAlertComponent } from 'src/app/components/modal-alert/modal-alert.component';
-// import { OrdemDeServicoFormComponent } from 'src/app/pages/ordem-de-servico/components/ordem-de-servico-form.component';
-
+import { ModalAlertComponent } from 'src/app/shared/components/modal-alert/modal-alert.component';
+import { FilmeFormComponent } from '../../components/filme-form.component';
 @Component({
   selector: 'app-filme-edit',
   templateUrl: './filme-edit.component.html'
@@ -11,12 +10,14 @@ import { ApiService } from 'src/app/services/api.service';
 export class FilmeEditComponent implements OnInit {
 
   id = this.route.snapshot.params.id;
+  filme;
+  capa;
 
-  // @ViewChild(ModalAlertComponent)
-  // private modalAlertComponent: ModalAlertComponent;
+  @ViewChild(ModalAlertComponent)
+  private modalAlertComponent: ModalAlertComponent;
 
-  // @ViewChild(OrdemDeServicoFormComponent)
-  // private ordemDeServicoFormComponent: OrdemDeServicoFormComponent;
+  @ViewChild(FilmeFormComponent)
+  private filmeFormComponent: FilmeFormComponent;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,27 +25,38 @@ export class FilmeEditComponent implements OnInit {
     private apiService: ApiService
   ) { }
 
-  ngOnInit() {
-    // this.apiService.get(`ordem_servicos/${this.id}`).then(ordemDeServico => {
-    //   this.ordemDeServicoFormComponent.startForm(ordemDeServico);
-    // });
+  async ngOnInit() {
+    await this.apiService.get(`filmes/${this.id}`)
+    .then(dadosFilme => {
+      this.filme = dadosFilme;
+    })
+    .catch(error => this.modalAlertComponent.show(error.error));
+    
+    await this.apiService.downloadFile(`filmes_capa/${this.id}`)
+    .then(file => {
+      this.capa = {capa: new File([file], this.filme.fileName)}
+    })
+    .catch(error => this.modalAlertComponent.show(error.error));
+    
+    this.filmeFormComponent.startForm({...this.filme, ...this.capa});
   }
 
-  // salvar(ordemDeServico) {
-  //   this.ordemDeServicoFormComponent.formSubmitted = true;
+  salvar(filme) {
+    this.filmeFormComponent.formSubmitted = true;
 
-  //   if (!this.ordemDeServicoFormComponent.formOrdemDeServico.valid) {
-  //     return;
-  //   }
+    if (!this.filmeFormComponent.formFilme.valid) {
+      return;
+    }
 
-  //   this.ordemDeServicoFormComponent.habilitarLoadBotaoSalvar = true;
+    this.filmeFormComponent.habilitarLoadBotaoSalvar = true;
 
-  //   this.apiService.patch(`ordem_servicos/${this.id}`, ordemDeServico).then(response => {
-  //     this.router.navigate([`ordem-de-servico/${response['ordemServicoId']}`]);
-  //   })
-  //   .catch(error => {
-  //     this.ordemDeServicoFormComponent.formSubmitted = false;
-  //     this.modalAlertComponent.show(error.error);
-  //   });
-  // }
+    this.apiService.patch(`filmes/${this.id}`, filme).then(response => {
+      this.router.navigate([`filmes/${response['filmeId']}`]);
+    })
+    .catch(error => {
+      this.filmeFormComponent.formSubmitted = false;
+      this.filmeFormComponent.habilitarLoadBotaoSalvar = false;
+      this.modalAlertComponent.show(error.error);
+    });
+  }
 }

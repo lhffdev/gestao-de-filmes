@@ -2,7 +2,7 @@
 
 <div *ngIf="filme">
   <div class="d-flex justify-content-end">
-    <button (click)="alterar()" class="btn btn-icon btn-bg-gray-100" data-toggle="tooltip" data-placement="bottom" title="Alterar">
+    <button (click)="alterar()" class="btn btn-icon btn-bg-gray-100" data-toggle="tooltip" data-placement="bottom" title="Alterar" [disabled]="deletando">
       <mat-icon svgIcon="pencil"></mat-icon>
     </button>
   

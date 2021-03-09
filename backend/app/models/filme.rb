@@ -17,6 +17,12 @@ class Filme < ApplicationRecord
       maximum: 200,
       message: 'O tamanho máximo permitido para os principais diretores é de 200 caracteres.'
     }
+  validates :idiomas,
+    presence: { message: 'É obrigatório informar os idiomas.' },
+    length: {
+      maximum: 50,
+      message: 'O tamanho máximo permitido para os idiomas é de 50 caracteres.'
+    }
   validates :fornecedor,
     presence: { message: 'É obrigatório informar o fornecedor.' },
     length: {
