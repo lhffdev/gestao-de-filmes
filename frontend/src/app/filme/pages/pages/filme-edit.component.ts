@@ -34,7 +34,7 @@ export class FilmeEditComponent implements OnInit {
     
     await this.apiService.downloadFile(`filmes_capa/${this.id}`)
     .then(file => {
-      this.capa = {capa: new File([file], this.filme.fileName)}
+      this.capa = {capa: new File([file], this.filme.nomeCapa)}
     })
     .catch(error => this.modalAlertComponent.show(error.error));
     

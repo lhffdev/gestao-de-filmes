@@ -11,22 +11,13 @@ import { LoaderComponent } from '../components/loader/loader.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { ModalAlertComponent } from './components/modal-alert/modal-alert.component';
 import { NullPipe } from './pipes/null.pipe';
-import { BooleanPipe } from './pipes/boolean.pipe';
-import { CustomNumberPipe } from './pipes/custom-number.pipe';
-import { CustomIntegerPipe } from './pipes/custom-integer.pipe';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
-import { CustomDateTimePipe } from './pipes/custom-date-time.pipe';
-
-
 @NgModule({
   declarations: [
     BackgroundComponent,
     ModalAlertComponent,
     LoaderComponent,
-    CustomNumberPipe,
-    CustomIntegerPipe,
-    CustomDatePipe,
-    CustomDateTimePipe
+    CustomDatePipe
   ],
   imports: [
     CommonModule,
@@ -46,19 +37,12 @@ import { CustomDateTimePipe } from './pipes/custom-date-time.pipe';
     FormsModule,
     NgSelectModule,
     IMaskModule,
-    CustomNumberPipe,
-    CustomIntegerPipe,
-    CustomDatePipe,
-    CustomDateTimePipe
+    CustomDatePipe
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     NullPipe,
-    BooleanPipe,
-    CustomNumberPipe,
-    CustomIntegerPipe,
-    CustomDatePipe,
-    CustomDateTimePipe
+    CustomDatePipe
   ]
 })
 export class SharedModule {}
